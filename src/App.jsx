@@ -5,20 +5,18 @@ import LogoMode from "./components/LogoMode";
 import MapMode from "./components/MapMode";
 import mapImage from "./assets/forTests/map_test.jpg";
 import { Footer } from "./components/Footer";
-
-const POLLING_INTERVAL = 60000; // 1 minute
-const FETCH_URL = "/api/status";
+import dates from "./assets/constants/CONST.json";
 
 const App = () => {
   const [mode, setMode] = useState("map");
   const [imageVersion, setImageVersion] = useState(null);
   const [imageData, setImageData] = useState(null);
-  const [successfulData, setLastSuccessfulData] = useState(false);
+  const [successfulData, setLastSuccessfulData] = useState(true);
   const [timeArrive, settimeArrive] = useState("00");
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(FETCH_URL);
+      const res = await axios.get(dates.FETCH_URL);
       const data = res.data;
 
       if (data.mode === "map") {
@@ -41,7 +39,7 @@ const App = () => {
 
   useEffect(() => {
     fetchData();
-    const interval = setInterval(fetchData, POLLING_INTERVAL);
+    const interval = setInterval(fetchData, dates.POLLING_INTERVAL);
     return () => clearInterval(interval);
   }, []);
 

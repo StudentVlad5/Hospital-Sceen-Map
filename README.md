@@ -1,12 +1,13 @@
-# React + Vite
+Ожидаем данные с бека:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  mode - "map" (отображение карты) или "logo"(отображение qr-кода)
+  imageVersion - для сравнения версий (если версия не изменилась, данные на пользователе не обновляются );
+  imageBase64 -  сам рисунок;
+  timeArrive - время прибытия
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+  все переменные изменяются в файле CONST.json
+  тестовые параметры удалить из кода после успешного продакшена 
+  
+  вопрос для уточнення по размеру карты -  бек присылает стандартный размер? 
+  вариант 1 - вывожу карту в размере, который получил с сервера
+  вариант 2 - фиксирую окно с размерами на пользователе и карту изменяю под размер окна (если размеры будут разные, то изменения карты будут заметны) 

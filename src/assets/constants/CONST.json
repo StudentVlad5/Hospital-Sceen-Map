@@ -2,5 +2,7 @@
   "url": "https://ваш-сайт",
   "tel": "8771 127 90 90",
   "email": "info@hospital.kz",
-  "address": "г. Город, ул. Улица, д. 1"
+  "address": "г. Город, ул. Улица, д. 1",
+  "POLLING_INTERVAL": "60000",
+  "FETCH_URL": "/api/status"
 }
