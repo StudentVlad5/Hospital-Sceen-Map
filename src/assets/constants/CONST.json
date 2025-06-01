@@ -4,5 +4,8 @@
   "email": "info@hospital.kz",
   "address": "г. Город, ул. Улица, д. 1",
   "POLLING_INTERVAL": "60000",
-  "FETCH_URL": "/api/status"
+  "FETCH_URL_fghdjs": "http://185.116.194.159:34364/getstatus",
+  "FETCH_URL_eksvjs": "http://185.116.194.159:34364/getstatus",
+  "FETCH_URL_image": "http://185.116.194.159:34364/download/"
+
 }

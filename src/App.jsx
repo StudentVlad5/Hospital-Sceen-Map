@@ -13,19 +13,23 @@ const App = () => {
   const [imageData, setImageData] = useState(null);
   const [successfulData, setLastSuccessfulData] = useState(true);
   const [timeArrive, settimeArrive] = useState("00");
+  const [displayType, setDisplayType] = useState(true);
 
   const fetchData = async () => {
+    let res;
     try {
-      const res = await axios.get(dates.FETCH_URL);
+      displayType
+        ? (res = await axios.get(dates.FETCH_URL_fghdjs))
+        : (res = await axios.get(dates.FETCH_URL_eksvjs));
       const data = res.data;
 
       if (data.mode === "map") {
         setMode("map");
         if (data.imageVersion !== imageVersion) {
           setImageVersion(data.imageVersion);
-          setImageData(data.imageBase64);
+          setImageData(data.imageName);
           settimeArrive(data.timeArrive);
-          settimeArrive(data.timeArrive);
+
           if (!successfulData) setLastSuccessfulData(true);
         }
       } else if (data.mode === "logo") {
@@ -41,14 +45,16 @@ const App = () => {
     fetchData();
     const interval = setInterval(fetchData, dates.POLLING_INTERVAL);
     return () => clearInterval(interval);
-  }, []);
+  }, [displayType]);
 
   return (
     <div className="max-w-[1920px] h-full overflow-hidden text-white relative flex flex-col w-[100%] p-[15px] mx-[0] my-[auto] text-base">
-      <Header />
+      <Header displayType={displayType} setDisplayType={setDisplayType} />
       {mode === "map" ? (
         <MapMode
-          imageData={imageData ? imageData : mapImage}
+          imageData={
+            imageData ? `${dates.FETCH_URL_image}${imageData}` : mapImage
+          }
           timeArrive={timeArrive}
         />
       ) : (

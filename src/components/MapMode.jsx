@@ -8,6 +8,7 @@ const MapMode = ({ imageData, timeArrive }) => {
           <motion.img
             key={imageData}
             src={imageData}
+            loading="lazy"
             alt="Map"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
